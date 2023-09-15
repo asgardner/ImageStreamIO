@@ -1171,7 +1171,9 @@ errno_t ImageStreamIO_image_sizing_from_scratch(
 
     if (name)
     {
+        #pragma GCC diagnostic ignored "-Wstringop-truncation"
         strncpy(image->md->name, name, STRINGMAXLEN_IMAGE_NAME);
+        #pragma GCC diagnostic pop
         image->md->name[STRINGMAXLEN_IMAGE_NAME-1] = '\0';
     }
     else
